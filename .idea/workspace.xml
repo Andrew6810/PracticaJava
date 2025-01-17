@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6de37c3-64fa-43b0-89b2-3bacf267476b" name="Changes" comment="" />
+    <list default="true" id="d6de37c3-64fa-43b0-89b2-3bacf267476b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/starwarsapi/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/starwarsapi/.idea/vcs.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,7 +41,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Usuario/Documents/Portafolio/ALURA ORACLE/JAVA-Intellij/screen-match-3-Aula0",
+    "last_opened_file_path": "C:/Users/Usuario/Documents/Portafolio/ALURA ORACLE/JAVA-Intellij/PracticaJava",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
