@@ -1,13 +1,13 @@
 package gestorDeAlumnos.domain;
 
-public class Alumnos {
+public class Student {
     private int ID;
     private String nombre;
     private String email;
     private int edad;
     private String curso;
 
-    public Alumnos (int ID, String nombre, String email, int edad, String curso) {
+    public Student(int ID, String nombre, String email, int edad, String curso) {
         this.ID = ID;
         this.nombre = nombre;
         this.email = email;
