@@ -1,9 +1,7 @@
 package gestorDeAlumnos.controllers;
 
 import gestorDeAlumnos.domain.Student;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,9 +23,39 @@ public class ControllerStudent {
     }
 
     @GetMapping("/Alumnos/{email}")
-    public Student getAlumno (@PathVariable String email) {
+    public Student getStudent (@PathVariable String email) {
         for (Student S : students) {
             if(S.getEmail().equalsIgnoreCase(email)){
+                return S;
+            }
+        }
+        return null;
+    }
+
+    @PostMapping("/Alumnos")
+    public Student postStudent(@RequestBody Student student) {
+        students.add(student);
+        return student;
+    }
+
+    @PatchMapping("/Alumnos")
+    public Student patchStudent(@RequestBody Student student) {
+        for (Student S : students) {
+            if(S.getID() == student.getID()){
+
+                if(student.getNombre() != null){
+                    S.setNombre(student.getNombre());
+                }
+                if(student.getEmail() != null) {
+                    S.setEmail(student.getEmail());
+                }
+                if(student.getEdad() != S.getEdad()){
+                    S.setEdad(student.getEdad());
+                }
+                if(student.getCurso() != null){
+                    S.setCurso(student.getCurso());
+                }
+
                 return S;
             }
         }
