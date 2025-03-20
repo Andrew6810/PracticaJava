@@ -77,7 +77,7 @@ public class ControllerStudent {
         return null;
     }
 
-    @DeleteMapping("/Alumno/{id}")
+    @DeleteMapping("/Alumnos/{id}")
     public Student deleteStudent(@PathVariable int id) {
         for (Student S : students) {
             if (S.getID() == id) {
