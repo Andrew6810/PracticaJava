@@ -38,6 +38,21 @@ public class ControllerStudent {
         return student;
     }
 
+    @PutMapping("/Alumnos")
+    public Student putStudent(@RequestBody Student student) {
+        for (Student S: students) {
+            if(S.getID() == student.getID()) {
+                S.setNombre(student.getNombre());
+                S.setEmail(student.getEmail());
+                S.setEdad(student.getEdad());
+                S.setCurso(student.getCurso());
+                return student;
+            }
+        }
+        return null;
+    }
+
+
     @PatchMapping("/Alumnos")
     public Student patchStudent(@RequestBody Student student) {
         for (Student S : students) {
