@@ -1,20 +1,24 @@
 package gestorDeAlumnos.domain;
 
 public class Student {
+    
+    //atributos de un alumno
     private int ID;
-    private String nombre;
+    private String name;
     private String email;
-    private int edad;
-    private String curso;
+    private int age;
+    private String course;
 
-    public Student(int ID, String nombre, String email, int edad, String curso) {
+    // Constructor
+    public Student(int ID, String name, String email, int age, String course) {
         this.ID = ID;
-        this.nombre = nombre;
+        this.name = name;
         this.email = email;
-        this.edad = edad;
-        this.curso = curso;
+        this.age = age;
+        this.course = course;
     }
 
+    //Métodos Getter  & Setter
     public int getID() {
         return ID;
     }
@@ -23,12 +27,12 @@ public class Student {
         this.ID = ID;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre (String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -39,20 +43,19 @@ public class Student {
         this.email = email;
     }
 
-    public int getEdad() {
-        return edad;
+    public int getAge() {
+        return age;
     }
 
-    public void setEdad (int edad){
-        this.edad = edad;
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    public String getCurso(){
-        return  curso;
+    public String getCourse() {
+        return course;
     }
 
-    public void setCurso(String curso){
-        this.curso = curso;
+    public void setCourse(String course) {
+        this.course = course;
     }
-
 }
