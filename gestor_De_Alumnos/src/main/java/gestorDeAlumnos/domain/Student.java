@@ -1,7 +1,7 @@
 package gestorDeAlumnos.domain;
 
 public class Student {
-    
+
     //atributos de un alumno
     private int ID;
     private String name;

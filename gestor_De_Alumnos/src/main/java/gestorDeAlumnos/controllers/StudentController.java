@@ -8,21 +8,25 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-public class ControllerStudent {
+@RequestMapping("/alumnos") //Unificar de URLs
+public class StudentController {
 
     private List<Student> students = new ArrayList<>(Arrays.asList(
-            new Student(1, "Andrey Leguizamo", "andrew111@gmail.com", 19, "ONCE-A"),
-            new Student(2, "Luisa Reyes", "lui222@hotmail.com", 17, "SEXTO-B"),
-            new Student(3, "Carlos Leon", "leo333@gmail.com", 22, "DOCE-A"),
-            new Student(4, "Martha Lopez", "lopez44@hotmail.com", 18, "SEPTIMO-C")
+            new Student(1, "Andrey Leguizamo", "andrew111@gmail.com", 19, "Ciencias de la Computación"),
+            new Student(2, "Luisa Reyes", "lui222@hotmail.com", 17, "Ingeniería Mecánica"),
+            new Student(3, "Carlos Leon", "leo333@gmail.com", 22, "Administración de Empresas"),
+            new Student(4, "Martha Lopez", "lopez44@hotmail.com", 18, "Ingenieria Eléctrica")
     ));
 
-    @GetMapping("/Alumnos")
+    // Mostrar todos los Alumnos
+    @GetMapping
     public List<Student> getStudents(){
+
         return students;
     }
 
-    @GetMapping("/Alumnos/{email}")
+    // Consultar un alumno por su email
+    @GetMapping("/{email}")
     public Student getStudent (@PathVariable String email) {
         for (Student S : students) {
             if(S.getEmail().equalsIgnoreCase(email)){
@@ -32,20 +36,23 @@ public class ControllerStudent {
         return null;
     }
 
-    @PostMapping("/Alumnos")
+    //Crear un nuevo estudiante
+    @PostMapping
     public Student postStudent(@RequestBody Student student) {
         students.add(student);
         return student;
     }
 
-    @PutMapping("/Alumnos")
+    //Modificacion total de una alumno
+    @PutMapping
     public Student putStudent(@RequestBody Student student) {
         for (Student S: students) {
-            if(S.getID() == student.getID()) {
-                S.setNombre(student.getNombre());
+            if (S.getID() == student.getID()) {
+                S.setName(student.getName());
                 S.setEmail(student.getEmail());
-                S.setEdad(student.getEdad());
-                S.setCurso(student.getCurso());
+                S.setAge(student.getAge());
+                S.setCourse(student.getCourse());
+
                 return student;
             }
         }
@@ -53,22 +60,23 @@ public class ControllerStudent {
     }
 
 
-    @PatchMapping("/Alumnos")
+    // Modificación parcial de un Alumno
+    @PatchMapping
     public Student patchStudent(@RequestBody Student student) {
         for (Student S : students) {
             if(S.getID() == student.getID()){
 
-                if(student.getNombre() != null){
-                    S.setNombre(student.getNombre());
+                if(student.getName() != null){
+                    S.setName(student.getName());
                 }
                 if(student.getEmail() != null) {
                     S.setEmail(student.getEmail());
                 }
-                if(student.getEdad() != S.getEdad()){
-                    S.setEdad(student.getEdad());
+                if(student.getAge() != 0){
+                    S.setAge(student.getAge());
                 }
-                if(student.getCurso() != null){
-                    S.setCurso(student.getCurso());
+                if(student.getCourse() != null){
+                    S.setCourse(student.getCourse());
                 }
 
                 return S;
@@ -77,7 +85,9 @@ public class ControllerStudent {
         return null;
     }
 
-    @DeleteMapping("/Alumnos/{id}")
+
+    //Eliminar un Estudiante a través de su ID
+    @DeleteMapping("/{id}")
     public Student deleteStudent(@PathVariable int id) {
         for (Student S : students) {
             if (S.getID() == id) {
