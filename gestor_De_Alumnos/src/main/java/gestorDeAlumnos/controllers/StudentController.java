@@ -1,6 +1,7 @@
 package gestorDeAlumnos.controllers;
 
 import gestorDeAlumnos.domain.Student;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -20,9 +21,9 @@ public class StudentController {
 
     // Mostrar todos los Alumnos
     @GetMapping
-    public List<Student> getStudents(){
+    public ResponseEntity<List<Student>> getStudents(){
 
-        return students;
+        return ResponseEntity.ok(students);
     }
 
     // Consultar un alumno por su email
