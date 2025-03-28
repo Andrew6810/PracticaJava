@@ -1,6 +1,7 @@
 package gestorDeAlumnos.controllers;
 
 import gestorDeAlumnos.domain.Student;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,21 +21,22 @@ public class StudentController {
     ));
 
     // Mostrar todos los Alumnos
-    @GetMapping
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Student>> getStudents(){
 
         return ResponseEntity.ok(students);
     }
 
     // Consultar un alumno por su email
-    @GetMapping("/{email}")
-    public Student getStudent (@PathVariable String email) {
+    //@GetMapping("/{email}")
+    @RequestMapping(value = "/{email}", method = RequestMethod.GET)
+    public ResponseEntity<?> getStudent (@PathVariable String email) {
         for (Student S : students) {
             if(S.getEmail().equalsIgnoreCase(email)){
-                return S;
+                return ResponseEntity.ok(S);
             }
         }
-        return null;
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Estudiante no encontrado con el email: " + email);
     }
 
     //Crear un nuevo estudiante
