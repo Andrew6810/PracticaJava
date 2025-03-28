@@ -2,6 +2,7 @@ package gestorDeAlumnos.controllers;
 
 import gestorDeAlumnos.domain.Student;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,7 +49,7 @@ public class StudentController {
 
     //Modificacion total de una alumno
     @PutMapping
-    public Student putStudent(@RequestBody Student student) {
+    public ResponseEntity<Student> putStudent(@RequestBody Student student) {
         for (Student S: students) {
             if (S.getID() == student.getID()) {
                 S.setName(student.getName());
@@ -56,10 +57,10 @@ public class StudentController {
                 S.setAge(student.getAge());
                 S.setCourse(student.getCourse());
 
-                return student;
+                return ResponseEntity.noContent().build();
             }
         }
-        return null;
+        return ResponseEntity.notFound().build();
     }
 
 
