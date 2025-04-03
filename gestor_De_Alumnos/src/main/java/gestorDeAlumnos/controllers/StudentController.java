@@ -5,7 +5,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -42,9 +44,17 @@ public class StudentController {
 
     //Crear un nuevo estudiante
     @PostMapping
-    public Student postStudent(@RequestBody Student student) {
+    public ResponseEntity<?> postStudent(@RequestBody Student student) {
         students.add(student);
-        return student;
+
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()// Obtiene la URL base de la solicitud actual
+                .path("/{email}")// Agrega un segmento a la URI con {username}
+                .buildAndExpand(student.getEmail())// Inserta el nombre del estudiante en la URI
+                .toUri(); // Convierte la ruta en un objeto URI
+
+        //return ResponseEntity.created(location).build();
+        return ResponseEntity.created(location).body(student);
     }
 
     //Modificacion total de una alumno
